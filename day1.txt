@@ -1,0 +1,156 @@
+
+
+		Spring Technology
+
+
+	1995 2022
+
+		Java Technology
+			|
+	--------------------------------------
+	|		|		|
+	JSE		JEE		JME
+	|		|		|
+	standard	enterprise	micro
+	|core java	|
+  oops concepts		------------
+  packages		|	|
+  exception handling	WEB	EJB
+  multithreading	|	  |	Spring JPA | Spring Mail | Spring Security
+  generics		Servlets  -----------|-------
+  collections		JSP	  |	  |ENTITY  |
+  file i/o		   Stateless Stateful Message
+			     |		|	 |
+  jdbc		    FlightEnquiry FlightTicket	SMS Mail
+  |		     src dest dt   	|
+ Advanced Java			   -------------
+  Networking			    |       |
+  RMI                              BMP     CMP
+	
+	
+
+EJB
+----
+	"Enterprise" java beans
+
+	beans = class = component
+	|
+	1. package
+	2. public
+	3. public no-arg ctor
+	4. private data if any
+	5. instrospection methods
+		setters/getters
+
+
+	package com.sbi;
+	public class SavingsAccount extends ...
+	{
+		private double balance;
+		public SavingsAccount () { }
+		void setBalance(double d) { }
+		double getBalance() { }
+	}
+	
+
+1 SPARC 	IBM	HP	
+2 UNIX
+|
+3 Enterprise Application Server
+		|
+		BEA - WebLogic ( 4 BankAPP )
+		IBM - WAS
+		Jboss
+
+7 features "Enterprise" application
+-------------------------------------------
+
+	1. Remote capability
+		ServerSocket serv = new ServerSocket();
+		Socket sock = new Socket();
+
+	2. High Availability = 24 x 7 
+		Clustering 
+		ServerA	ServerB ServerC ServerD
+		   App    App  	 App	 App
+
+	3. Multithreading
+		Runnable r = new Thread();
+	
+
+	4. "Pool"ing of resources
+	     |
+	   set of common objects
+
+	5. "Caching" of resources
+		|
+	    set of unique objects = primary key
+
+	6. Transaction management
+		ACID
+
+	7. Security management
+		TLS / https / otp / grid / trans pass
+		scan code
+
+
+-----------------------------------------------------
+
+		Core Java
+			|
+		Association Principal
+			|
+	  --------------------------
+	  |	  |	  |	   |
+	 isA	hasA	usesA	producesA
+
+packages | exception handling | interfaces | abstract 
+classes  | collection | jdbc
+class Machine
+{
+}
+class AtmMachine extends Machine //isA
+{
+   CardReaderDevice crd = new CardReaderDevice();//hasA
+
+	ProducesA	   //useA  useA
+	|		     |        |
+	AtmBill dispenseCash(Card c, int pin ... .. ...)
+	{
+	
+		AtmBill a = new AtmBill(...);	
+		return a;
+	}
+
+}
+
+			Object
+			| memory
+			|
+		-------------------------
+		|			|
+		file			DB
+		|oos			| insert query
+	serialization   		Persistence
+					|		
+				---------------------
+				|		|
+	 			BMP		CMP
+				|		| ORM = hibernate/toplink
+		bean managed [ developer ]  container managerd
+
+	insert into savings_table
+	values (????????);
+	
+
+
+
+
+
+
+
+
+
+
+
+		
