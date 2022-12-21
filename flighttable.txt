@@ -1,0 +1,13 @@
+create table flights
+(
+	flightNumber int,
+	flightName varchar(20),
+	flightSource varchar(20),
+	flightDest  varchar(20)
+);
+
+insert into flights values (101,'Air India','Mumbai','New York');
+insert into flights values (102,'Air America','Mumbai','Washington');
+insert into flights values (103,'Air France','Mumbai','Paris');
+insert into flights values (104,'Air Canada','Mumbai','Canada');
+insert into flights values (105,'British Airways','Mumbai','London');
