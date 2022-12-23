@@ -1,0 +1,217 @@
+DRIVER   : org.hsqldb.jdbc.JDBCDriver
+URL      : jdbc:hsqldb:hsql://localhost/xdb
+USERNAME : SA
+PASSWORD : 
+
+create table flights
+(
+	flightNumber int,
+	flightName varchar(20),
+	flightSource varchar(20),
+	flightDest  varchar(20)
+);
+
+insert into flights values (101,'Air India','Mumbai','New York');
+insert into flights values (102,'Air America','Mumbai','Washington');
+insert into flights values (103,'Air France','Mumbai','Paris');
+insert into flights values (104,'Air Canada','Mumbai','Canada');
+insert into flights values (105,'British Airways','Mumbai','London');
+
+
+
+
+	1.		2.		  3.
+	|		|		   |
+	jdbc		JdbcTemplate	  ORM
+	|				 (hibernate)
+	|javax.sql
+     DataSource (i)
+	|
+org.springframework.
+jdbc.datasource.
+DriverManagerDataSource
+	|
+
+
+DriverManagerDataSource dmds = new DriverManagerDataSource();
+dmds.setDriverClassName("");
+dmds.setPassword
+dmds.setUrl
+dmds.setUsername
+
+
+
+flights
+|
+|	SpringJDBC
+|	|
+| -----------------------------------
+|		|		|
+entity		repo		pom.xml
+|		|		   |
+Flight		FlightRepository  spring-jdbc
+		|
+		DataSource	myspring3.xml
+			 |		|
+			DriverManagerDataSource		
+
+
+
+	Spring+ORM
+
+
+
+	ORM
+	|
+	Object Relational Mapping
+
+
+	java classes    are not tables
+	  
+	database tables are not classes
+
+	
+	ACC_MASTER
+	-------------
+	ACNO ACNAME ACTYPE MASTER_BALANCE	
+ROW ->	101  SURESH SAV	   50000		
+	102  NARESH SAV    70000		
+	103  HARESH SAV	   80000		
+
+
+	AC_PAN_DETAILS
+	-----------------
+	PANNUMBER  FATHER_NAME_ON_PAN  ISSUED_BY   .. .. ...
+	..	....	...	....
+
+	AC_DETAILS
+	----------
+	AC_NO	ADD_TYPE	AREA	STREET	CITY	PIN	
+	101	home		..	..	..	..
+	101	office		..	..	..	..
+
+
+	AC_TRANS
+	------------
+	TRANS_ID   TRANS_TYPE	TRANS_AMT  SRC  DEST
+	.....		Dr	5000	   101  102
+	.....		Dr	6000	   101  102
+	.....		Dr	7000	   101  102
+	
+
+
+
+
+	class Account
+	{
+		int accountNumber;
+		String accountHolderName;
+		String accountType;
+		double masterBalance;
+
+
+	}
+
+Object-> Account accObj = new Account(101,"SURESH","SAV",50000);
+		transient
+
+	
+
+	Spring - enterprise architecture f/w
+	 +
+	ORM - database management framework
+
+	jdbc	jdbctemplate	orm
+	|	|		|
+	pure	partial		no jdbc
+	code
+	<-----BMP----------->	CMP
+
+
+	
+	CDMA		GSM
+			|
+			sim card
+		
+		vodafone		airtel
+		number
+
+vendor lock-in
+Hibernate	
+	|SessionFactory
+	|Session
+	save(obj) - insert query
+	get() 	  - select query
+	update()  - update
+	delete()  - delete
+	
+
+		JPA specification
+			|persist()
+			|find();
+			|merge();
+			|remove();
+	------------------------------------
+	  |			|	|	
+	Hibernate		TopLink ..
+
+
+
+			CDI
+			| context dependency inject
+	-----------------------------
+		|		|
+	spring f/w		
+
+
+@Entity <-- identified by a primary key
+|
+@Table ->flights
+|
+Flight
+   @Id
+   flightNumber <-- PK
+
+	Flight theFlightObject = new Flight(.....);
+
+	LocalContainer'EntityManagerFactory'Bean
+	EntityManagerFactory
+	EntityManager --> EntityTransaction
+		|		 |
+	-----------------	commit/rollback
+	|	    |
+   persit(theFlightObject ) Object get();
+
+
+		SpringORM
+			|
+----------------------------------------------
+|1		|		|	|2
+pom.xml		pojo		repo	myspring.xml
+|		 |		|		|
+spring-context  annotated 	FlightRepo	DataSource
+spring-jdbc	Flight		FlightRepoImpl	TransactionManager
+spring-test	@Entity,@Table			LocalContainerEntityManagerFactory
+spring-orm	@Id				
+spring-tx
+hibernate
+
+
+select 
+flight0_.flightNumber as flightNu1_0_, 
+flight0_.flightDest as flightDe2_0_, 
+flight0_.flightName as flightNa3_0_, 
+flight0_.flightSource as flightSo4_0_ 
+from flights flight0_
+
+
+
+
+
+
+
+
+
+
+
+

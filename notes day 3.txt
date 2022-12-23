@@ -1,0 +1,270 @@
+
+
+			who
+			|?
+			|domain users
+			|deveopers,testers, deployers
+			|database architect, devops
+			|meanstack
+			|fullstack developer JFSD
+		----------------------
+		|		|
+		where		when
+		|GITC		|9 to 5
+	---------------------------------------
+	|		|		|
+	why		what		how
+	|REASON		in<-FORMation	implementation
+		
+
+
+
+
+
+
+
+
+	Order Processing System
+
+	processOrder(Order order)
+	{
+		store the order - insert query
+		create the payment - insert query
+		update the stock - update query
+	}
+	
+
+	Order		Payment		Stock	
+	|		|		|
+	begin		begin		begin
+	  insert	  insert 	  update
+	end		end		end
+
+
+
+	Order		Payment		Stock	
+	OrderRepo	PaymentRepo	StockRepo
+	persist()	persist()	merge()
+	|		|		|
+	begin
+	  insert	  insert 	  update
+					end
+
+
+
+
+Jack
+
+	ORDERS <-- ORM
+	PK
+	orderid	 price	productid	quantity
+	1	 1000	123		3
+
+	PAYMENTS <-- ORM	FK
+	paymentid	amount	orderid
+	2		3000	1
+
+	TX_PRODUCTS <-- JdbcTemplate
+	productid	quantity
+	123		9996
+
+
+	class Pojo {
+		void fun() { 
+			some logic	
+		}
+	}
+	class Repository {
+		Pojo p = new Pojo();
+		void foo() { 
+			some PRE logic		
+			p.fun(); 
+			some POST logic	
+		}
+	}
+	class Service {
+		Repository r = new Repository();
+		void far() { 
+			some PRE logic
+			r.foo(); 
+			some POST logic
+		}
+	}
+	class Controller {
+		Service s = new Service();
+		void fee() {  
+			some PRE logic
+			s.far(); 
+			some POST logic
+		}
+	}
+
+
+
+	Cafe
+	-----------
+		1	Kitchen tx_orders tx_payments tx_products
+			  |      |	   |		|
+		2	Pojo | Order |Payment |      Stock
+			|
+			|         AbstractRepository
+			|	    |           |
+		3  Repository | OrderRepository	|   ProductRepository	
+		    |		PaymentRepository
+		    |
+		4 Service	OnlineShoppingService
+		|		    @Transactional
+		|			processOrder()
+	5 Controller | Biller machine
+	|	
+6 UI <-- whiteboard <- MENU
+angular/react/jsp
+	
+
+   Idli Wada Sambar
+
+	Thought  Feel	Action	Result
+	|	 |	 |
+    invisible	emotion  
+	|
+    faster than
+    light
+	|
+    non-linear
+
+
+
+	JPA
+
+	Transaction 
+
+	META-INF/persistence.xml
+EntityManagerFactory factory = Persistence.createEntityManagerFactory();
+EntityManager em =factory.createEntityManager();
+
+EntityTransaction et = 	em.getTransaction();
+
+	et.begin();
+		em.persist(obj);
+	et.end();
+
+
+
+
+
+	@Transactional
+		em.persist(obj);
+
+
+
+
+
+
+
+	keep the spring aside and understand
+	the hibernate and jpa way to insert the object
+
+
+			Server
+	Session		|response
+			|id
+			|request
+			Client
+
+	hibernate		jpa
+	|			|
+	Order			Order
+
+				@PersistenceContext
+
+1	SessionFactory		EntityManagerFactory
+2	Session sess		EntityManager em
+
+3	Transaction t		EntityTransaction et
+	Programmatic transaction
+	|
+4	t.begin();		et.begin();
+	   sess.save();		   em.persist();
+5	   t.commit(); / 	   em.commit(); /
+6	   t.rollback();	   em.rollback();
+7	t.end();		et.end();
+
+@Transactional <-- declarative transaction management
+
+
+================================================
+
+	Spring AOP
+
+	class Account
+	{
+		private float balance;
+
+		@Transactional
+		void withdraw(float amt)
+		{
+			balance = balance - amt;
+		}
+	}
+
+	Server
+	| SavingsAccountServerProxy
+	| {
+	|	Account  ao = new Account();
+	|	withdraw(a) {
+	|		Transaction tx = getTransaction();
+	|		  tx.begin();
+	|		    ao.withdraw(a);	
+	|		  tx.commit();		
+	|	}
+	|
+	|
+	| SavingsAccountClientProxy
+	|     SavingsAccountServerProxy servsp
+	|	withdraw(a) {
+	|		servsp.withdraw(a);
+	|	}
+	ATM Machine <-- 
+		3000
+
+
+
+
+
+
+
+
+Lets play a chess
+
+ Canada						London
+  |	   					|
+  Son + Mother			Father + Daughter
+  |	 |			 |		|
+  |	 Ind			Ind		|
+  |  		ChessBoard			|
+  |						|
+ChessBoard				ChessBoard	
+ moveKnight
+  L shape
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

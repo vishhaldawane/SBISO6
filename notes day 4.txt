@@ -1,0 +1,265 @@
+
+
+	NLP
+	|||
+	||Processing/programming
+	|Linguistic
+	Neuro
+		VAKOG - body
+
+	VAK				KAV
+	|				|
+	brain				brain
+	|				|
+	M				F
+	H				W
+	|
+	saree
+
+	
+
+
+
+	MVC
+	----
+
+	M - data 	(brain/memory)
+	V - face	  |
+	C - controller ( heart )
+
+
+	mvc pattern	vs	mvc framework
+	|
+
+	Hotel
+	|
+1	lady starts a hotel
+	1. she is the chef M
+	2. she knows to serve it V
+	3. she knows to take the order C
+
+
+3	3	3
+|	|	|
+cust1	cust2   cust3
+table1	table2	table3...
+
+
+2	lady starts a hotel
+	1. he is the chef M
+	2. she knows to serve it V
+	3. she knows to take the order C
+
+
+
+3	lady starts a hotel
+	1. he1 is the chef M		 Student
+	2. he2 knows to serve it V	 StudentView
+	3. she knows to take the order C StudentController
+
+
+She is here- > FrontController
+	Hotel1
+4	lady starts a hotel
+	1. he1 is the chef M
+	2. he2 knows to serve it V
+	3. he3 knows to take the order C
+
+	Hotel2
+4	lady starts a hotel
+	1. he4 is the chef M
+	2. he5 knows to serve it V
+	3. he6 knows to take the order C
+
+	Hotel3
+4	lady starts a hotel
+	1. he7 is the chef M
+	2. he8 knows to serve it V
+	3. he9 knows to take the order C
+
+
+
+
+	WebServer + ServletContainer
+	  apache	tomcat
+
+	
+				[some business logic
+				    Servlet ]
+				2. ServletContainer
+				|
+	Java Based -> Web Application
+				|
+			1. WebServer
+			| http response 
+			| proxy1=sock1 + t1
+			| proxy2=sock2 + t2
+			| proxy3=sock3 + t3
+			| proxy4=sock4 + t4
+			|
+	+---------------+-----------------
+	|		|	|	|
+	| sock1		|sock2	|sock3	|sock4
+	| http request1 |req2	|req3	|req4
+	Chrome		Edge	Firefox	Safari	
+	
+	Web Client
+
+
+ <a href='http://ip:port/Airlines/findFlights'>click here</a>
+  <---------------------><------------------->
+	apache		    tomcat
+
+
+
+	development folder stucture varies
+	as per the IDE
+	Eclipse, STS, NetBeans, Intellij, VSC
+
+
+
+DEVELOPMENT STRUCTURE BELOW
+--------------------------------
+		
+			Airlines <-- deployment folder
+			| 
+		---------------------------------------
+		|		|		|	
+		src
+		|
+		main
+		|
+		java
+		|
+	------------------------
+	|	|
+		webapp
+		| index.jsp
+		|
+		WEB-INF		jsp pages	html/css
+		|		here		pages
+	--------------------	index.jsp
+	|		
+	web.xml		
+	|		
+   /findFlights	  
+	|
+   FlightEnquiryServlet
+
+	
+
+
+DEPLOYEMENT STRUCTURE BELOW
+--------------------------------
+	
+			Airlines <-- deployment folder
+			| 
+		---------------------------------------
+		|		|		|	
+		WEB-INF		jsp pages	html/css
+		|		here		pages
+	--------------------	index.jsp
+	|		|
+	web.xml		classes
+	|		|
+   /findFlights	  FlightEnquiryServlet
+	|
+   FlightEnquiryServlet
+
+
+
+		web information
+			|
+		-----------------
+		|		|
+		static		dynamic
+		|		|
+		abc.html	generated via servlets
+				php python asp.net
+
+	Servlet
+		to generate dynamic web information
+
+
+		live cricket score
+		live stock info
+		environment statistical forecarst
+		
+		
+		Servlet
+		|
+	-------------------
+	|
+GenericServlet
+	  |
+	HttpServlet
+		|
+	FlightEnquiryServlet
+
+
+	1. apache tomcat
+	2. your servlet 
+	3. browser
+
+
+
+
+
+FrontController : DispatcherServlet 
+			abc-servlet.xml
+
+				|Student 4
+				|Flight
+				|Insurance
+				|BankAccount
+		|InsuranceController 3
+		|FlightController 3
+		|StudentController 3
+		|BankAccountController
+		|
+		|	|InsuranceView.jsp 5
+		|	|StudentView.jsp 5
+		|	|FlightView.jsp
+		|	|BankAccount.jsp
+	------------------
+	|
+ insurance.html
+ flight.html
+ student.html(1)
+ bankaccount.html
+	|
+   click 2
+
+
+
+
+		AirlineApp
+			|
+	----------------------------------------
+	|		|(1)		| (5)
+	WEB-INF		index.jsp  Example1.jsp VIEW	
+	|			   ${myMessage}
+-------------------
+|		|
+|		com.sbi
+|	 Example1Controller(3) | mini controller
+|		(4) myMessage -> Welcome to Spring MVC	
+|
+web.xml<--DispatcherServlet FrontController
+|
+my-spring-mvc-servlet.xml <-- DispatcherServlets's conf
+(2) -> bean name="/example1.do" 
+	class="Example1Controller"
+
+
+
+
+
+
+
+
+
+
+
+
+	
