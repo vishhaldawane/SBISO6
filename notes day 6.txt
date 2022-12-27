@@ -1,0 +1,117 @@
+
+mental
+social
+physical
+emotional
+technical
+spiritual
+
+9820 44 34 64
+
+
+	OneToOne
+	OneToMany
+	ManyToOne
+	ManyToMany
+
+
+	Emp_2
+	PK			FK
+	|			|
+	empno	empname	  pass_no
+	101	Suresh	  123123123	
+	102	Rajesh
+	103	Dinesh
+
+	Passport_2
+	PK
+	|
+	passportnumber issuedBy issuedOn expiryOn
+	123123123	..	...	..
+	223223223	..	..	..
+
+
+
+	Department	- One
+	|
+	deptno  dname		dloc
+	10 	IT 		Chicago
+	20 	Sales 		NY
+	30	Purchase	Washington
+
+
+	Employee	- Many
+	|				FK
+	empno	ename	job	sal	dno
+	101	Jack	..	..	10
+	102	Jane			10
+	103	Julie			20
+	104	Julia			20
+	105	Miller			30
+
+
+
+	Customer		
+	cust_id	custname  custemail
+	101	Jack	  jack@gmail.com
+	102	Robert	  robert@gmail.com
+
+
+	Subscriptions
+	sub_id	sub_type	sub_duration
+	5	CDs		1 month
+	6	Books		3 months
+
+	customer_subscription_link
+	FK	FK
+	cid	sid
+	101	5
+	101	6
+	102	5
+	102	6
+	
+
+--------------------------------------------------------
+
+
+	Spring Security	
+
+	UserDetailsService <-- interface
+	|	UserDetails loadUserByUsername();
+	|
+	MyUserDetailsServiceImpl
+		|
+		UserDetails foo() {
+			UserDetails m = new MyUserDetails();
+			return m;
+		}
+
+
+UserDetails
+|
+MyUserDetails
+
+
+create table user
+(
+	id int primary key,
+	userName varchar(50),
+	password varchar(200),
+	isActive boolean,
+	role varchar(20)
+)
+
+insert into user_info values (1,'vishal','jack',true,'ROLE_USER');
+insert into user_info values (2,'root','abc',true,'ROLE_ADMIN');
+insert into user_info values (3,'jack','jack123',true,'ROLE_USER');
+insert into user_info values (4,'jane','jack223',true,'ROLE_USER');
+
+
+
+
+
+
+
+
+
+
